@@ -41,7 +41,7 @@
 
             // Check to see if sides make a valid triangle
             $side_array = array($this->side1, $this->side2, $this->side3);
-            sort($side_array); //sort function changes the array indices
+            sort($side_array); //sort function that changes the values of the indices
             if ($side_array[0] + $side_array[1] > $side_array[2]) {
                 return true;
             } else {
