@@ -19,12 +19,33 @@
 
         function determineTriangle()
         {
-            if ($this->side1 == $this->side2 && $this->side2 == $this->side3){
-                return "This is an equilateral triangle!";
-            } elseif ($this->side1 == $this->side2 || $this->side2 == $this->side3 || $this->side1 == $this->side3 ) {
-                return "This is an isoceles triangle!";
-            } else{
-                return "This is a scalene triangle";
+            if ($this->validTriangle()) {
+                if ($this->side1 == $this->side2 && $this->side2 == $this->side3) {
+                    return "This is an equilateral triangle!";
+                } elseif ($this->side1 == $this->side2 || $this->side2 == $this->side3 || $this->side1 == $this->side3 ) {
+                    return "This is an isoceles triangle!";
+                } else {
+                    return "This is a scalene triangle";
+                }
+            } else {
+                return "This is not a valid triangle!";
+            }
+        }
+
+        function validTriangle()
+        {
+            // Check to see if user input valid numbers
+            if ($this->side1 <= 0 || $this->side2 <= 0 || $this->side3 <= 0) {
+                return false;
+            }
+
+            // Check to see if sides make a valid triangle
+            $side_array = array($this->side1, $this->side2, $this->side3);
+            sort($side_array); //sort function changes the array indices
+            if ($side_array[0] + $side_array[1] > $side_array[2]) {
+                return true;
+            } else {
+                return false;
             }
 
         }
